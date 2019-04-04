@@ -1,4 +1,4 @@
-class CreateTweets < ActiveRecord::Migration[5.1]
+class CreateTweets < ActiveRecord::Migration[5.2]
   def up
     create_table :tweets do |t|
       t.string :tweet
