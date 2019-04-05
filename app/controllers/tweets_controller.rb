@@ -6,7 +6,7 @@ class TweetsController < ApplicationController
     else
       redirect '/login'
     end
-  end 
+  end
 
   get '/tweets/new' do
     erb :'tweets/new'
@@ -16,5 +16,12 @@ class TweetsController < ApplicationController
     @tweet = Tweet.find(params[:id])
     erb :'tweet/show_tweets'
   end
+
+  post 'tweets' do
+    @tweet = Tweet.create(:content => params["Content"])
+    @tweet.save
+    redirect "/tweets/show_tweets"
+  end
+
 
 end
