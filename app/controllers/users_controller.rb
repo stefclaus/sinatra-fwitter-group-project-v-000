@@ -14,6 +14,7 @@ class UsersController < ApplicationController
       redirect '/signup'
     else
       user.save
+      session[:user_id] = user.id
       redirect '/tweets'
     end
   end
@@ -38,8 +39,12 @@ class UsersController < ApplicationController
   end
 
   get "/logout" do
-    session.clear
-    redirect "/login"
+    if !!logged_in?
+      session.clear
+      redirect "/login"
+    else 
+      redirect "/index"
+    end
   end
 
 end
