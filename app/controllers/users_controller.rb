@@ -5,11 +5,14 @@ class UsersController < ApplicationController
   end
 
   post "/signup" do
+    user = User.new(:email => params[:email], :username => params[:username], :password => params[:password])
     if params[:email] == "" || params[:username] == "" || params[:password] == ""
-      redirect '/index'
-      else
-        User.new(:email => params[:email], :username => params[:username], :password => params[:password])
-        redirect '/tweets'
+      redirect '/signup'
+    elsif !!logged_in?
+      redirect '/login'
+    else
+      user.save
+      redirect '/tweets'
     end
 	end
 
