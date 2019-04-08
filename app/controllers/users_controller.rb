@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   get '/login' do
     if !logged_in?
       erb :"users/login"
-    else !!logged_in?
+    else 
       redirect '/tweets'
     end
   end
@@ -34,9 +34,10 @@ class UsersController < ApplicationController
 	    session[:user_id] = user.id
 	    redirect "/tweets"
 	  else
-	    redirect "/login"
+	    redirect "/signup"
 	  end
   end
+
 
   get "/users/:slug" do
     if !!logged_in?
