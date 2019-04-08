@@ -26,7 +26,7 @@ class TweetsController < ApplicationController
     end
   end
 
-  post '/tweets/new' do
+  post '/tweets' do
     binding.pry
     if logged_in? && !params[:content].empty?
       @user = current_user
