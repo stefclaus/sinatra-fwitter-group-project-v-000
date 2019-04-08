@@ -27,7 +27,6 @@ class TweetsController < ApplicationController
   end
 
   post '/tweets' do
-    binding.pry
     if logged_in? && !params[:content].empty?
       @user = current_user
       @user.tweets << Tweet.create(:content => params[:content])
