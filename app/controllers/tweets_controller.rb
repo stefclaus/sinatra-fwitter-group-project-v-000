@@ -26,11 +26,16 @@ class TweetsController < ApplicationController
     end
   end
 
-  post '/tweets/new' do
-    if logged_in? && !params[:content].empty?
-      @user = current_user
-      @user.tweets << Tweet.create(:content => params[:content])
-      redirect "/tweets"
+  post '/tweets' do
+    if !logged_in?
+        redirect "/login"
+    elsif !params[:content].empty?
+        @user = current_user
+        @tweet = Tweet.create(:content => params[:content])
+        @user.tweets << @tweet
+        redirect "/tweets/#{@tweet.id}"
+    else
+      redirect "/tweets/new"
     end
   end
 

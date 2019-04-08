@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   get '/login' do
     if !logged_in?
       erb :"users/login"
-    else 
+    else
       redirect '/tweets'
     end
   end
@@ -40,12 +40,12 @@ class UsersController < ApplicationController
 
 
   get "/users/:slug" do
-    if !!logged_in?
+  #  if !!logged_in?
       @user = User.find_by_slug(params[:slug])
       erb :"users/show"
-    else !logged_in?
-      redirect '/login'
-    end
+  #  else !logged_in?
+  #    redirect '/login'
+  #  end
   end
 
 
