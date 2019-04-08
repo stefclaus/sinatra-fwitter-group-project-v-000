@@ -32,7 +32,7 @@ class TweetsController < ApplicationController
     elsif !params[:content].empty?
         @user = current_user
         @user.tweets << Tweet.create(:content => params[:content])
-        redirect "/tweets"
+        redirect "/tweets/:id/new"
     else
       redirect "/tweets/new"
     end
