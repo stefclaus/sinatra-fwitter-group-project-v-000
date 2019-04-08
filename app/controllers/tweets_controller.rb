@@ -31,6 +31,8 @@ class TweetsController < ApplicationController
       @user = current_user
       @user.tweets << Tweet.create(:content => params[:content])
       redirect "/tweets"
+    else
+      redirect "/login"
     end
   end
 
