@@ -33,7 +33,7 @@ class TweetsController < ApplicationController
         @user = current_user
         @user.tweets << Tweet.create(:content => params[:content])
         redirect "/tweets"
-    else 
+    else
       redirect "/tweets/new"
     end
   end
