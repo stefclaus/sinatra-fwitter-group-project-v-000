@@ -40,6 +40,7 @@ class UsersController < ApplicationController
 
 
   get "/users/:slug" do
+    binding.pry
     if !!logged_in?
       @user = User.find_by_slug(params[:slug])
       erb :"users/show"
